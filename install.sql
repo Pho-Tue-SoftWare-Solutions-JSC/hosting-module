@@ -1,0 +1,1 @@
+-- Hitechcloud module - no custom tables required for initial version

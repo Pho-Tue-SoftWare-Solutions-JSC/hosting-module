@@ -1,0 +1,303 @@
+{
+    "file": "includes/modules/Hosting/hitechcloud/api/class.hitechcloud_apiroutes.php",
+    "class": "hitechcloud_apiroutes",
+    "name": "Hitechcloud API Routes",
+    "description": "REST API routes for Hitechcloud shared hosting module",
+    "auth": false,
+    "category": [
+        {
+            "name": "Services",
+            "description": ""
+        }
+    ],
+    "route": {
+        "GET /service/@id/account": {
+            "name": "Get Account Details",
+            "description": "Get hosting account details for a service",
+            "param": [],
+            "route": "GET /service/@id/account",
+            "auth": true,
+            "handle": "account_get",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/account"
+        },
+        "GET /service/@id/domains": {
+            "name": "List Domains",
+            "description": "List all domains for a hosting account",
+            "param": [],
+            "route": "GET /service/@id/domains",
+            "auth": true,
+            "handle": "domains_list",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/domains"
+        },
+        "POST /service/@id/domains": {
+            "name": "Add Domain",
+            "description": "Add a domain to the hosting account",
+            "param": [
+                {"type": "string", "name": "domain", "description": "Domain name", "example": "example.com"},
+                {"type": "string", "name": "type", "description": "Domain type (addon, subdomain)", "example": "addon"}
+            ],
+            "route": "POST /service/@id/domains",
+            "auth": true,
+            "handle": "domains_add",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/domains"
+        },
+        "DELETE /service/@id/domains/@domain": {
+            "name": "Delete Domain",
+            "description": "Remove a domain from the hosting account",
+            "param": [
+                {"type": "string", "name": "domain", "description": "Domain name to remove", "example": "example.com"}
+            ],
+            "route": "DELETE /service/@id/domains/@domain",
+            "auth": true,
+            "handle": "domains_delete",
+            "category": "Services",
+            "http": "DELETE",
+            "address": "/service/@id/domains/@domain"
+        },
+        "GET /service/@id/databases": {
+            "name": "List Databases",
+            "description": "List all databases for a hosting account",
+            "param": [],
+            "route": "GET /service/@id/databases",
+            "auth": true,
+            "handle": "databases_list",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/databases"
+        },
+        "POST /service/@id/databases": {
+            "name": "Create Database",
+            "description": "Create a new database",
+            "param": [
+                {"type": "string", "name": "db_name", "description": "Database name", "example": "mydb"},
+                {"type": "string", "name": "db_user", "description": "Database user", "example": "dbuser"},
+                {"type": "string", "name": "db_password", "description": "Database password", "example": "secret"}
+            ],
+            "route": "POST /service/@id/databases",
+            "auth": true,
+            "handle": "databases_create",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/databases"
+        },
+        "DELETE /service/@id/databases/@db_name": {
+            "name": "Delete Database",
+            "description": "Delete a database",
+            "param": [
+                {"type": "string", "name": "db_name", "description": "Database name", "example": "mydb"}
+            ],
+            "route": "DELETE /service/@id/databases/@db_name",
+            "auth": true,
+            "handle": "databases_delete",
+            "category": "Services",
+            "http": "DELETE",
+            "address": "/service/@id/databases/@db_name"
+        },
+        "GET /service/@id/ssl": {
+            "name": "List SSL Certificates",
+            "description": "List all SSL certificates for a hosting account",
+            "param": [],
+            "route": "GET /service/@id/ssl",
+            "auth": true,
+            "handle": "ssl_list",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/ssl"
+        },
+        "POST /service/@id/ssl": {
+            "name": "Issue SSL Certificate",
+            "description": "Issue a new Let's Encrypt SSL certificate",
+            "param": [
+                {"type": "string", "name": "domain", "description": "Domain name", "example": "example.com"}
+            ],
+            "route": "POST /service/@id/ssl",
+            "auth": true,
+            "handle": "ssl_issue",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/ssl"
+        },
+        "GET /service/@id/stats": {
+            "name": "Get Usage Statistics",
+            "description": "Get disk, bandwidth, and CPU usage statistics",
+            "param": [],
+            "route": "GET /service/@id/stats",
+            "auth": true,
+            "handle": "stats",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/stats"
+        },
+        "GET /service/@id/backups": {
+            "name": "List Backups",
+            "description": "List all backups for a hosting account",
+            "param": [],
+            "route": "GET /service/@id/backups",
+            "auth": true,
+            "handle": "backups_list",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/backups"
+        },
+        "POST /service/@id/backups": {
+            "name": "Create Backup",
+            "description": "Create a new backup",
+            "param": [],
+            "route": "POST /service/@id/backups",
+            "auth": true,
+            "handle": "backups_create",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/backups"
+        },
+        "POST /service/@id/backups/@backup_id/restore": {
+            "name": "Restore Backup",
+            "description": "Restore a backup by ID",
+            "param": [
+                {"type": "string", "name": "backup_id", "description": "Backup ID", "example": "bk_123"}
+            ],
+            "route": "POST /service/@id/backups/@backup_id/restore",
+            "auth": true,
+            "handle": "backups_restore",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/backups/@backup_id/restore"
+        },
+        "DELETE /service/@id/backups/@backup_id": {
+            "name": "Delete Backup",
+            "description": "Delete a backup by ID",
+            "param": [
+                {"type": "string", "name": "backup_id", "description": "Backup ID", "example": "bk_123"}
+            ],
+            "route": "DELETE /service/@id/backups/@backup_id",
+            "auth": true,
+            "handle": "backups_delete",
+            "category": "Services",
+            "http": "DELETE",
+            "address": "/service/@id/backups/@backup_id"
+        },
+        "GET /service/@id/cronjobs": {
+            "name": "List Cron Jobs",
+            "description": "List all cron jobs for a hosting account",
+            "param": [],
+            "route": "GET /service/@id/cronjobs",
+            "auth": true,
+            "handle": "cronjobs_list",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/cronjobs"
+        },
+        "POST /service/@id/cronjobs": {
+            "name": "Create Cron Job",
+            "description": "Create a new cron job",
+            "param": [
+                {"type": "string", "name": "schedule", "description": "Cron schedule expression", "example": "0 * * * *"},
+                {"type": "string", "name": "command", "description": "Command to execute", "example": "/usr/bin/php /home/user/cron.php"}
+            ],
+            "route": "POST /service/@id/cronjobs",
+            "auth": true,
+            "handle": "cronjobs_create",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/cronjobs"
+        },
+        "DELETE /service/@id/cronjobs/@cron_id": {
+            "name": "Delete Cron Job",
+            "description": "Delete a cron job by ID",
+            "param": [
+                {"type": "string", "name": "cron_id", "description": "Cron job ID", "example": "cron_1"}
+            ],
+            "route": "DELETE /service/@id/cronjobs/@cron_id",
+            "auth": true,
+            "handle": "cronjobs_delete",
+            "category": "Services",
+            "http": "DELETE",
+            "address": "/service/@id/cronjobs/@cron_id"
+        },
+        "GET /service/@id/php": {
+            "name": "Get PHP Info",
+            "description": "Get PHP version and settings",
+            "param": [],
+            "route": "GET /service/@id/php",
+            "auth": true,
+            "handle": "php_info",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/php"
+        },
+        "POST /service/@id/php/version": {
+            "name": "Switch PHP Version",
+            "description": "Change PHP version for a domain",
+            "param": [
+                {"type": "string", "name": "domain", "description": "Domain name", "example": "example.com"},
+                {"type": "string", "name": "version", "description": "PHP version", "example": "8.2"}
+            ],
+            "route": "POST /service/@id/php/version",
+            "auth": true,
+            "handle": "php_switch",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/php/version"
+        },
+        "GET /service/@id/sftp": {
+            "name": "List SFTP Accounts",
+            "description": "List SFTP/FTP accounts",
+            "param": [],
+            "route": "GET /service/@id/sftp",
+            "auth": true,
+            "handle": "sftp_list",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/sftp"
+        },
+        "POST /service/@id/sftp": {
+            "name": "Create SFTP Account",
+            "description": "Create a new SFTP/FTP account",
+            "param": [
+                {"type": "string", "name": "ftp_user", "description": "FTP username", "example": "ftpuser"},
+                {"type": "string", "name": "ftp_password", "description": "FTP password", "example": "secret"},
+                {"type": "string", "name": "directory", "description": "Home directory", "example": "/public_html"}
+            ],
+            "route": "POST /service/@id/sftp",
+            "auth": true,
+            "handle": "sftp_create",
+            "category": "Services",
+            "http": "POST",
+            "address": "/service/@id/sftp"
+        },
+        "DELETE /service/@id/sftp/@ftp_user": {
+            "name": "Delete SFTP Account",
+            "description": "Delete an SFTP/FTP account",
+            "param": [
+                {"type": "string", "name": "ftp_user", "description": "FTP username", "example": "ftpuser"}
+            ],
+            "route": "DELETE /service/@id/sftp/@ftp_user",
+            "auth": true,
+            "handle": "sftp_delete",
+            "category": "Services",
+            "http": "DELETE",
+            "address": "/service/@id/sftp/@ftp_user"
+        },
+        "GET /service/@id/logs": {
+            "name": "Get Logs",
+            "description": "Get access or error logs",
+            "param": [
+                {"type": "string", "name": "type", "description": "Log type (access, error)", "example": "access"},
+                {"type": "string", "name": "domain", "description": "Domain name", "example": "example.com"},
+                {"type": "int", "name": "lines", "description": "Number of lines", "example": "100"}
+            ],
+            "route": "GET /service/@id/logs",
+            "auth": true,
+            "handle": "logs",
+            "category": "Services",
+            "http": "GET",
+            "address": "/service/@id/logs"
+        }
+    }
+}
